@@ -79,12 +79,14 @@ term.setCursorPos(math.floor(w / 2 - #("Please wait") / 2), math.ceil(h / 2))
 term.write("Please wait")
 
 local strings = require("cc.strings")
+local res = assert(http.get("https://pastebin.com/raw/3LfWxRWh"))
 local bigfont = load(
-    assert(http.get("https://pastebin.com/raw/3LfWxRWh").readAll(), "Failed to download bigfont."),
+    res.readAll(),
     "bigfont",
     "bt",
     _ENV
 )()
+res.close()
 
 term.setTextColor(colors.black)
 term.clear()
