@@ -110,11 +110,10 @@ local function updateProccesses()
         sortedProcesses[#sortedProcesses + 1] = process
     end
     table.sort(sortedProcesses, function(a, b)
-        local res = a[sortField] < b[sortField]
         if sortDir then
-            return not res
+            return a[sortField] > b[sortField]
         end
-        return res
+        return a[sortField] < b[sortField]
     end)
     inbox:setTable(sortedProcesses)
 end
